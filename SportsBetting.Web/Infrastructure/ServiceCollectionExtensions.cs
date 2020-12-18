@@ -3,10 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using SportsBetting.Data.Repositories;
 using SportsBetting.Data.Repositories.Contracts;
 using SportsBetting.Services.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SportsBetting.Web.Infrastructure
 {
