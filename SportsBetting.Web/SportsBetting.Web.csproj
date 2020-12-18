@@ -4,6 +4,21 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SportsBetting.Controllers\SportsBetting.Controllers.csproj" />
+    <ProjectReference Include="..\SportsBetting.Data\SportsBetting.Data.csproj" />
+    <ProjectReference Include="..\SportsBetting.Services\SportsBetting.Services.csproj" />
+  </ItemGroup>
+
 
 
 </Project>
