@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SportsBetting.Services.Contracts;
+using SportsBetting.Services.Dtos.EventDtos;
 using SportsBetting.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,28 @@ namespace SportsBetting.Web.Controllers
             this.mapper = mapper;
         }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task <ActionResult<EventActionViewModel>> AddNewEventMode(CreateEventDto createInput)
+        {
+            var allEvents = await this.eventService.CreateAsync(createInput);
+
+            if (allEvents == null)
+            {
+                return View("BadRequest");
+            }
+            return View(mapper.Map<EventActionViewModel>(allEvents));
+        }
+
+        [HttpGet]
+        public ActionResult AddNewEventMode()
+        {
+            return View();
+        }
 
         public ActionResult<EventActionViewModel> PreviewMode()
         {
             var result = new List<EventActionViewModel>();
-            //await service. and add those props to the view model and return it.
             var allEvents = this.eventService.GetAll().ToList();
             foreach (var eventDto in allEvents)
             {

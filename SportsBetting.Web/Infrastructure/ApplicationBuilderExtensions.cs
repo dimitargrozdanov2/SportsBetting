@@ -29,6 +29,9 @@ namespace SportsBetting.Web.Infrastructure
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Event}/{action=PreviewMode}/{id?}");
+                //endpoints.MapControllerRoute(
+                //     name: "alternative",
+                //    pattern: "{controller}/{action}/{id?}");
             });
         }
 

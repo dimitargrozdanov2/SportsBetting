@@ -15,6 +15,7 @@ namespace SportsBetting.Web.Infrastructure
             var mapperConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new DtoMapperProfile());
+                mc.AddProfile(new ControllerMappingProfile());
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
