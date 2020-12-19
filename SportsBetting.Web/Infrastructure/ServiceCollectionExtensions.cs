@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using SportsBetting.Data.Repositories;
 using SportsBetting.Data.Repositories.Contracts;
+using SportsBetting.Services;
+using SportsBetting.Services.Contracts;
 using SportsBetting.Services.Infrastructure;
 
 namespace SportsBetting.Web.Infrastructure
@@ -24,7 +26,9 @@ namespace SportsBetting.Web.Infrastructure
         {
             services.AddControllersWithViews();
 
-            //add scoped services
+            services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IEventRepository, EventRepository>();
+
             services.AddTransient(typeof(IRepository<>), typeof(DbRepository<>));
         }
     }

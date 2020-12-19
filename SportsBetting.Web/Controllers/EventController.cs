@@ -20,7 +20,6 @@ namespace SportsBetting.Web.Controllers
         }
 
 
-        [HttpGet]
         public ActionResult<EventActionViewModel> PreviewMode()
         {
             var result = new List<EventActionViewModel>();
