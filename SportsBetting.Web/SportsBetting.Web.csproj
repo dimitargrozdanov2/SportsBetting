@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SportsBetting.Controllers\SportsBetting.Controllers.csproj" />
     <ProjectReference Include="..\SportsBetting.Data\SportsBetting.Data.csproj" />
     <ProjectReference Include="..\SportsBetting.Services\SportsBetting.Services.csproj" />
   </ItemGroup>

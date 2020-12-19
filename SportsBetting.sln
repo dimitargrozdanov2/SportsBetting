@@ -7,11 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsBetting.Test", "Sport
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsBetting.Services", "SportsBetting.Services\SportsBetting.Services.csproj", "{402096F6-958F-4381-A900-B394C33BA4CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsBetting.Controllers", "SportsBetting.Controllers\SportsBetting.Controllers.csproj", "{81E409E7-5873-47A5-A99C-FB951985C5FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsBetting.Data", "SportsBetting.Data\SportsBetting.Data.csproj", "{A80F3BFE-85A8-4AD6-A2CF-E518AB551F74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsBetting.Data", "SportsBetting.Data\SportsBetting.Data.csproj", "{A80F3BFE-85A8-4AD6-A2CF-E518AB551F74}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsBetting.Web", "SportsBetting.Web\SportsBetting.Web.csproj", "{2EBEB8E5-2836-43DE-A60D-11DE18F31086}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsBetting.Web", "SportsBetting.Web\SportsBetting.Web.csproj", "{2EBEB8E5-2836-43DE-A60D-11DE18F31086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +25,6 @@ Global
 		{402096F6-958F-4381-A900-B394C33BA4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{402096F6-958F-4381-A900-B394C33BA4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{402096F6-958F-4381-A900-B394C33BA4CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81E409E7-5873-47A5-A99C-FB951985C5FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81E409E7-5873-47A5-A99C-FB951985C5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81E409E7-5873-47A5-A99C-FB951985C5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81E409E7-5873-47A5-A99C-FB951985C5FF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A80F3BFE-85A8-4AD6-A2CF-E518AB551F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A80F3BFE-85A8-4AD6-A2CF-E518AB551F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80F3BFE-85A8-4AD6-A2CF-E518AB551F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
