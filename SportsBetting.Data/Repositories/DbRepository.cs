@@ -43,7 +43,7 @@ namespace SportsBetting.Data.Repositories
         /// <inheritdoc/>
         public virtual IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-            return (filter != null ? dbContext.Set<TEntity>().Where(filter) : dbContext.Set<TEntity>());
+            return (filter != null ? dbContext.Set<TEntity>().Where(filter).ToList() : dbContext.Set<TEntity>().ToList());
         }
 
         /// <inheritdoc/>

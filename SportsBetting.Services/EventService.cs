@@ -43,7 +43,7 @@ namespace SportsBetting.Services
 
         public IEnumerable<EventDto> GetAll(Expression<Func<Event, bool>> filter = null)
         {
-            return (eventRepository.GetAll(filter)).Select(i => mapper.Map<EventDto>(i)).ToList();
+            return (eventRepository.GetAll(filter)).Select(i => mapper.Map<EventDto>(i));
         }
 
         public async Task<EventDto> GetSingleAsync(Expression<Func<Event, bool>> filter)
