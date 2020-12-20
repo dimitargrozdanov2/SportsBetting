@@ -25,8 +25,8 @@ namespace SportsBetting.Services
 
         public async Task CreateAsync()
         {
-            var todayDate = DateTime.UtcNow;
-            var entity = new Event() { StartDate = DateTime.UtcNow.AddHours(23).AddMinutes(59).AddSeconds(59) };
+            var todayDate = DateTime.UtcNow.Date;
+            var entity = new Event() { StartDate = todayDate.AddHours(23).AddMinutes(59).AddSeconds(59) };
             await eventRepository.AddAsync(entity);
         }
 

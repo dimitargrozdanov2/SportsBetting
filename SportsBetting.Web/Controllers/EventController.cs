@@ -28,10 +28,16 @@ namespace SportsBetting.Web.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task <ActionResult<EventActionViewModel>> AddNewEventMode()
+        public async Task <ActionResult<EventActionViewModel>> AddNewEventMode(IFormCollection form)
         {
             await this.eventService.CreateAsync();
-            return RedirectToAction("PreviewMode");
+            return RedirectToAction("EditView");
+        }
+
+        [HttpGet]
+        public ActionResult AddNewEventMode()
+        {
+            return View();
         }
 
         [HttpGet]
