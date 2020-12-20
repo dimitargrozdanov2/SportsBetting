@@ -58,8 +58,8 @@
                 </td>
                 <td>
                 <td>
-                    <button asp-action="EditMode" asp-route-id="@item.Id">Edit</button>
-                    <button asp-action="DeleteMode" asp-route-id="@item.Id">Delete</button>
+                    <button type="button" onclick="location.href='@Url.Action("EditMode","Event", new { Id = item.Id })'"> Edit</button>
+                    <button type="button" onclick="location.href='@Url.Action("DeleteMode","Event",new { Id = item.Id })'"> Delete</button>
                 </td>
             </tr>
         }

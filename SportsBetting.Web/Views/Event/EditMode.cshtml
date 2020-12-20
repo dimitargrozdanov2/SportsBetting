@@ -1,4 +1,8 @@
 ﻿@model SportsBetting.Web.Models.EventActionViewModel
+    <script>
+        console.log(@Model)
+    </script>
+
 <h4>Event</h4>
 <hr />
 <div class="row">
@@ -6,6 +10,11 @@
         <form asp-action="EditMode">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" type="text" disabled="disabled" value="@Model.Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -31,8 +40,9 @@
                 <input asp-for="StartDate" type="datetime-local" class="form-control" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class=""button-box col-lg-12"">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteMode","Event",new { Id = Model.Id })'"> Delete</button>
             </div>
         </form>
     </div>

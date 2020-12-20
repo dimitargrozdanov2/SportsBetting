@@ -49,9 +49,11 @@ namespace SportsBetting.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditMode(int id)
+        public async Task<ActionResult<EventActionViewModel>> EditMode(int id)
         {
-            return View();
+            var dto = await eventService.GetSingleAsync(e => e.Id == id);
+            var viewModel = mapper.Map<EventActionViewModel>(dto);
+            return View(viewModel);
         }
 
         [ValidateAntiForgeryToken]
