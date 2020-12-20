@@ -24,9 +24,9 @@ namespace SportsBetting.Web.Controllers
         [HttpPost]
         public async Task <ActionResult<EventActionViewModel>> AddNewEventMode(CreateEventDto createInput)
         {
-            var allEvents = await this.eventService.CreateAsync(createInput);
+            var createdEvent = await this.eventService.CreateAsync(createInput);
 
-            if (allEvents == null)
+            if (createdEvent == null)
             {
                 return View("BadRequest");
             }
@@ -40,6 +40,25 @@ namespace SportsBetting.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult EditMode(int id)
+        {
+            return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<ActionResult<EventActionViewModel>> EditMode(int id, UpdateEventDto updateEventDto)
+        {
+            var updatedEvent = await this.eventService.UpdateAsync(id, updateEventDto);
+
+            if (updatedEvent == null)
+            {
+                return View("BadRequest");
+            }
+            //return View(mapper.Map<EventActionViewModel>(allEvents));
+            return RedirectToAction("PreviewMode");
+        }
         public ActionResult<EventActionViewModel> PreviewMode()
         {
             var result = new List<EventActionViewModel>();

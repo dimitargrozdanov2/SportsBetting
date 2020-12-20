@@ -6,6 +6,5 @@ namespace SportsBetting.Services.Dtos.EventDtos
 {
     public class UpdateEventDto : BaseEventDto
     {
-        public int Id { get; set; }
     }
 }

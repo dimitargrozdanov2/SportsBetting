@@ -65,8 +65,8 @@ namespace SportsBetting.Services
             var entityToBeUpdated = await eventRepository.GetAsync(primaryKey);
 
             if (entityToBeUpdated == null) return null;
-            var x = mapper.Map(editInput, entityToBeUpdated);
-            x.Id = primaryKey;
+            var entity = mapper.Map(editInput, entityToBeUpdated);
+            entity.Id = primaryKey;
             var result = await eventRepository.UpdateAsync(entityToBeUpdated);
             return mapper.Map<EventDto>(result);
         }
