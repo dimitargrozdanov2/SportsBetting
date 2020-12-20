@@ -10,7 +10,8 @@ namespace SportsBetting.Web.Models
     {
         public int Id { get; set; }
 
-        [RegularExpression("^[^0-9]+$", ErrorMessage = "Name cannot contain numbers")]
+        [RegularExpression("^/w+[ -:]/w+$", ErrorMessage = "Name cannot contain more than one space")]
+        
         [Required, MinLength(10), MaxLength(150)]
         public string Name { get; set; }
 

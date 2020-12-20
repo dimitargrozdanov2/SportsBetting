@@ -41,9 +41,9 @@ namespace SportsBetting.Data.Repositories
         }
 
         /// <inheritdoc/>
-        public virtual IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public virtual async Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-            return (filter != null ? dbContext.Set<TEntity>().Where(filter).ToList() : dbContext.Set<TEntity>().ToList());
+            return (filter != null ? await dbContext.Set<TEntity>().Where(filter).ToListAsync() : await dbContext.Set<TEntity>().ToListAsync());
         }
 
         /// <inheritdoc/>

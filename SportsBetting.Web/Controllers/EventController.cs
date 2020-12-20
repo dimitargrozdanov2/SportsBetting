@@ -21,9 +21,9 @@ namespace SportsBetting.Web.Controllers
             this.mapper = mapper;
         }
 
-        public ActionResult<EventActionViewModel> PreviewMode()
+        public async Task<ActionResult<EventActionViewModel>> PreviewMode()
         {
-            var allEvents = this.eventService.GetAll().ToList();
+            var allEvents = await this.eventService.GetAll();
             var mappedEvents = mapper.Map<IList<EventActionViewModel>>(allEvents);
             return View(mappedEvents);
         }

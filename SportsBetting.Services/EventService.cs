@@ -41,9 +41,10 @@ namespace SportsBetting.Services
             await eventRepository.DeleteAsync(id);
         }
 
-        public IEnumerable<EventDto> GetAll(Expression<Func<Event, bool>> filter = null)
+        public async Task<IEnumerable<EventDto>> GetAll(Expression<Func<Event, bool>> filter = null)
         {
-            return (eventRepository.GetAll(filter)).Select(i => mapper.Map<EventDto>(i));
+            var events = await eventRepository.GetAll(filter);
+            return this.mapper.Map<IEnumerable<EventDto>>(events);
         }
 
         public async Task<EventDto> GetSingleAsync(Expression<Func<Event, bool>> filter)
