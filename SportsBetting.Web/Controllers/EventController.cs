@@ -5,7 +5,6 @@ using SportsBetting.Services.Contracts;
 using SportsBetting.Services.Dtos.EventDtos;
 using SportsBetting.Web.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SportsBetting.Web.Controllers
