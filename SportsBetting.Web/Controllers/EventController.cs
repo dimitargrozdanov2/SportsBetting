@@ -49,10 +49,6 @@ namespace SportsBetting.Web.Controllers
                 result.Add(mapper.Map<EventActionViewModel>(eventDto));
             }
 
-            //if (model == null)
-            //{
-            //    return View("NotFound");
-            //}
             return View(result);
         }
     }
