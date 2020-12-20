@@ -13,6 +13,7 @@ namespace SportsBetting.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Event>().Property(e => e.StartDate).HasDefaultValueSql("timezone('utc', now())");
             base.OnModelCreating(builder);
         }
     }

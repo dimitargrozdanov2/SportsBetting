@@ -24,7 +24,7 @@ namespace SportsBetting.Web.Models
         [Required, Range(1, 50)]
         public double OddsForSecondTeam { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         public DateTime StartDate { get; set; }
     }
 }
