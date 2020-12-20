@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace SportsBetting.Services.Dtos.EventDtos
 {
-    public class CreateEventDto : BaseEventDto
+    public class CreateEventDto
     {
+        [DisplayFormat(DataFormatString = "{0:dd MM yyyy HH:mm}")]
+        public DateTime StartDate { get; set; }
     }
 }

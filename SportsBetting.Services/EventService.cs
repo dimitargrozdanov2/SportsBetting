@@ -23,14 +23,11 @@ namespace SportsBetting.Services
             this.mapper = mapper;
         }
 
-        public async Task<EventDto> CreateAsync(CreateEventDto createInput)
+        public async Task CreateAsync()
         {
-            if (createInput == null) throw new BadRequestException("No data provided");
-
-            var entity = mapper.Map<Event>(createInput);
+            var todayDate = DateTime.UtcNow;
+            var entity = new Event() { StartDate = DateTime.UtcNow.AddHours(23).AddMinutes(59).AddSeconds(59) };
             await eventRepository.AddAsync(entity);
-            var result = mapper.Map<EventDto>(entity);
-            return result;
         }
 
         public async Task DeleteAsync(int id)

@@ -7,7 +7,7 @@
 
 <h1>Edit Mode</h1>
 <div class="float-right">
-    <button type="button" onclick="location.href='@Url.Action("EditView","Event")'"> Preview Mode</button>
+    <button type="button" onclick="location.href='@Url.Action("PreviewMode","Event")'"> Preview Mode</button>
     <br />
 </div>
 <table class="table">
@@ -66,7 +66,7 @@
     </tbody>
 </table>
 <div class="float-left">
-    <button type="button" onclick="location.href='@Url.Action("AddNewEventMode","Event")'"> Add New</button>
+    <button type="button" onclick=@Url.Action("AddNewEventMode","Event")> Add New</button>
     <br />
 </div>
 <br />
