@@ -41,6 +41,14 @@ namespace SportsBetting.Web.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult<EventActionViewModel>> EditView()
+        {
+            var allEvents = await this.eventService.GetAll();
+            var mappedEvents = mapper.Map<IList<EventActionViewModel>>(allEvents);
+            return View(mappedEvents);
+        }
+
+        [HttpGet]
         public ActionResult EditMode(int id)
         {
             return View();

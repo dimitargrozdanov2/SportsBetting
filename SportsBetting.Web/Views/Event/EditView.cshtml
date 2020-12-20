@@ -1,21 +1,21 @@
 ﻿@model IEnumerable<SportsBetting.Web.Models.EventActionViewModel>
 
 @{
-    ViewBag.Title = "PreviewMode";
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "EditView";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var rowcount = 1;
 }
 
-<h1>Preview Mode</h1>
-
+<h1>Edit Mode</h1>
 <div class="float-right">
-    <button type="button" onclick="location.href='@Url.Action("EditView","Event")'"> Edit Mode</button>
+    <button type="button" onclick="location.href='@Url.Action("EditView","Event")'"> Preview Mode</button>
     <br />
 </div>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                EventId
+            </th>
             <th>
                 EventName
             </th>
@@ -37,7 +37,10 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr class="@(item.StartDate < DateTime.UtcNow ? "finished" : rowcount % 2 == 0 ? "even" : "odd")">
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -53,9 +56,17 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
                 </td>
-
+                <td>
+                <td>
+                    <button asp-action="EditMode" asp-route-id="@item.Id">Edit</button>
+                    <button asp-action="DeleteMode" asp-route-id="@item.Id">Delete</button>
+                </td>
             </tr>
-            rowcount++;
         }
     </tbody>
 </table>
+<div class="float-left">
+    <button type="button" onclick="location.href='@Url.Action("AddNewEventMode","Event")'"> Add New</button>
+    <br />
+</div>
+<br />
