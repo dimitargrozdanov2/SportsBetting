@@ -1,3 +1,11 @@
-﻿.Event {
+﻿.odd {
+    background-color: AliceBlue;
+}
 
+.even {
+    background-color: HoneyDew;
+}
+
+.finished {
+    background-color: LightSalmon;
 }

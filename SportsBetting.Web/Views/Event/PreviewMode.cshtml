@@ -4,6 +4,7 @@
     ViewBag.Title = "PreviewMode";
     ViewData["Title"] = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var rowcount = 1;
 }
 
 <h1>View</h1>
@@ -15,7 +16,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                EventName
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OddsForFirstTeam)
@@ -27,34 +28,36 @@
                 @Html.DisplayNameFor(model => model.OddsForSecondTeam)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartDate)
+                EventStartDate
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr class="<text>Event</text>@item.Id">
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OddsForFirstTeam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OddsForDraw)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OddsForSecondTeam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                <a asp-action="EditMode" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="DeleteMode" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr class="@(item.StartDate < DateTime.UtcNow ? "finished" : rowcount % 2 == 0 ? "even" : "odd")">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OddsForFirstTeam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OddsForDraw)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OddsForSecondTeam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    <a asp-action="EditMode" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="DeleteMode" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+            rowcount++;
+        }
     </tbody>
 </table>
