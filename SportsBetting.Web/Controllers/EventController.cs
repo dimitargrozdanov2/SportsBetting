@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SportsBetting.Services.Contracts;
 using SportsBetting.Services.Dtos.EventDtos;
@@ -20,6 +21,17 @@ namespace SportsBetting.Web.Controllers
             this.mapper = mapper;
         }
 
+        public ActionResult<EventActionViewModel> PreviewMode()
+        {
+            var result = new List<EventActionViewModel>();
+            var allEvents = this.eventService.GetAll().ToList();
+            foreach (var eventDto in allEvents)
+            {
+                result.Add(mapper.Map<EventActionViewModel>(eventDto));
+            }
+
+            return View(result);
+        }
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task <ActionResult<EventActionViewModel>> AddNewEventMode(CreateEventDto createInput)
@@ -59,16 +71,25 @@ namespace SportsBetting.Web.Controllers
             //return View(mapper.Map<EventActionViewModel>(allEvents));
             return RedirectToAction("PreviewMode");
         }
-        public ActionResult<EventActionViewModel> PreviewMode()
-        {
-            var result = new List<EventActionViewModel>();
-            var allEvents = this.eventService.GetAll().ToList();
-            foreach (var eventDto in allEvents)
-            {
-                result.Add(mapper.Map<EventActionViewModel>(eventDto));
-            }
 
-            return View(result);
+        [HttpGet]
+        public async Task<ActionResult> DeleteMode(int id)
+        {
+            var dto = await eventService.GetSingleAsync(e => e.Id == id);
+            if (dto == null)
+            {
+                return View("NotFound");
+            }
+            var viewModel = mapper.Map<EventActionViewModel>(dto);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteMode(int id, IFormCollection form)
+        {
+            await this.eventService.DeleteAsync(id);
+            return RedirectToAction("PreviewMode");
         }
     }
 }
