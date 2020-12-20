@@ -20,6 +20,11 @@ namespace SportsBetting.Web.Infrastructure
             try
             {
                 await this.next(context);
+
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Response.Redirect("/error/pagenotfound");
+                }
             }
             catch (Exception ex)
             {
@@ -29,38 +34,27 @@ namespace SportsBetting.Web.Infrastructure
 
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            var code = HttpStatusCode.InternalServerError;
-
             var result = string.Empty;
 
             switch (exception)
             {
-                case ModelValidationException modelValidationException:
-                    code = HttpStatusCode.BadRequest;
-                    result = SerializeObject(new
-                    {
-                        ValidationDetails = true,
-                        modelValidationException.Errors
-                    });
-                    break;
-                case EntityExistsException _:
-                    code = HttpStatusCode.BadRequest;
-                    result = SerializeObject(new[] { "Invalid request." });
+                case EntityExistsException ex:
+                    context.Response.Redirect($"/Error/Alreadyexistserror?error={ex.Message}");
                     break;
                 case NotFoundException _:
-                    code = HttpStatusCode.NotFound;
+                    context.Response.Redirect($"/Error/PageNotFound");
+                    break;
+                case BadRequestException ex:
+                    context.Response.Redirect($"/Error/Invalid?error={ex.Message}");
                     break;
             }
 
             if (String.IsNullOrEmpty(result))
             {
-                code = HttpStatusCode.BadRequest;
-                result = SerializeObject(new[] { "Invalid request path" });
+                context.Response.Redirect($"/Error/BadRequestPage");
+
             }
-
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)code;
-
 
             return context.Response.WriteAsync(result);
         }
