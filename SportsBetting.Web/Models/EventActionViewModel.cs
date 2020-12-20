@@ -15,14 +15,14 @@ namespace SportsBetting.Web.Models
         [Required, MinLength(10), MaxLength(150)]
         public string Name { get; set; }
 
-        [Required, Range(1.01, 50)]
-        public decimal OddsForFirstTeam { get; set; }
+        [Required, Range(1, 50)]
+        public double OddsForFirstTeam { get; set; }
 
-        [Required, Range(1.01, 50)]
-        public decimal OddsForDraw { get; set; }
+        [Required, Range(1, 50)]
+        public double OddsForDraw { get; set; }
 
-        [Required, Range(1.01, 50)]
-        public decimal OddsForSecondTeam { get; set; }
+        [Required, Range(1, 50)]
+        public double OddsForSecondTeam { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime StartDate { get; set; }

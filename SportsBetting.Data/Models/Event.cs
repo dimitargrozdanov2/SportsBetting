@@ -10,11 +10,11 @@ namespace SportsBetting.Data.Models
 
         public string Name { get; set; }
 
-        public decimal OddsForFirstTeam { get; set; }
+        public double OddsForFirstTeam { get; set; }
 
-        public decimal OddsForDraw { get; set; }
+        public double OddsForDraw { get; set; }
 
-        public decimal OddsForSecondTeam { get; set; }
+        public double OddsForSecondTeam { get; set; }
 
         public DateTime StartDate { get; set; }
 

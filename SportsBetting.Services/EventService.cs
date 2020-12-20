@@ -44,6 +44,12 @@ namespace SportsBetting.Services
         public async Task<IEnumerable<EventDto>> GetAll(Expression<Func<Event, bool>> filter = null)
         {
             var events = await eventRepository.GetAll(filter);
+            foreach (var e in events)
+            {
+                e.OddsForDraw = Math.Round(e.OddsForDraw, 2);
+                e.OddsForFirstTeam = Math.Round(e.OddsForFirstTeam, 2);
+                e.OddsForSecondTeam = Math.Round(e.OddsForSecondTeam, 2);
+            }
             return this.mapper.Map<IEnumerable<EventDto>>(events);
         }
 

@@ -9,11 +9,11 @@ namespace SportsBetting.Services.Dtos.EventDtos
     {
         public string Name { get; set; }
 
-        public decimal OddsForFirstTeam { get; set; }
+        public double OddsForFirstTeam { get; set; }
 
-        public decimal OddsForDraw { get; set; }
+        public double OddsForDraw { get; set; }
 
-        public decimal OddsForSecondTeam { get; set; }
+        public double OddsForSecondTeam { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime StartDate { get; set; }
