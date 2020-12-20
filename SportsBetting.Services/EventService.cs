@@ -33,12 +33,12 @@ namespace SportsBetting.Services
             return result;
         }
 
-        public async Task DeleteAsync(int primaryKey)
+        public async Task DeleteAsync(int id)
         {
-            ObjectCheck.PrimaryKeyCheck(primaryKey, $"primaryKey <= 0 in {nameof(Event)}");
-            var entityToBeDeleted = await GetAsync(primaryKey);
+            ObjectCheck.PrimaryKeyCheck(id, $"primaryKey <= 0 in {nameof(Event)}");
+            var entityToBeDeleted = await GetAsync(id);
             if (entityToBeDeleted == null) throw new NotFoundException("Entity could not be found");
-            await eventRepository.DeleteAsync(primaryKey);
+            await eventRepository.DeleteAsync(id);
         }
 
         public IEnumerable<EventDto> GetAll(Expression<Func<Event, bool>> filter = null)
@@ -52,22 +52,21 @@ namespace SportsBetting.Services
             return singleEntity == null ? throw new NotFoundException("No data found") : mapper.Map<EventDto>(singleEntity);
         }
 
-        public async Task<EventDto> GetAsync(int primaryKey)
+        public async Task<EventDto> GetAsync(int id)
         {
-            ObjectCheck.PrimaryKeyCheck(primaryKey, $"primaryKey <= 0 in {nameof(Event)}");
-            var entity = await eventRepository.GetAsync(primaryKey);
+            ObjectCheck.PrimaryKeyCheck(id, $"primaryKey <= 0 in {nameof(Event)}");
+            var entity = await eventRepository.GetAsync(id);
             return entity == null ? throw new NotFoundException("No data found") : mapper.Map<EventDto>(entity);
         }
 
-        public async Task<EventDto> UpdateAsync(int primaryKey, UpdateEventDto editInput)
+        public async Task UpdateAsync(int id, UpdateEventDto editInput)
         {
-            ObjectCheck.PrimaryKeyCheck(primaryKey, $"primaryKey <= 0 in {nameof(UpdateEventDto)}");
-            var entityToBeUpdated = await eventRepository.GetAsync(primaryKey);
+            ObjectCheck.PrimaryKeyCheck(id, $"id <= 0 in {nameof(UpdateEventDto)}");
+            var entityToBeUpdated = await eventRepository.GetAsync(id);
             if (entityToBeUpdated == null) throw new BadRequestException("No data provided");
             var entity = mapper.Map(editInput, entityToBeUpdated);
-            entity.Id = primaryKey;
-            var result = await eventRepository.UpdateAsync(entityToBeUpdated);
-            return mapper.Map<EventDto>(result);
+            entity.Id = id;
+            await eventRepository.UpdateAsync(entityToBeUpdated);
         }
     }
 }

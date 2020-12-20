@@ -34,10 +34,10 @@ namespace SportsBetting.Data.Repositories
         }
 
         /// <inheritdoc/>
-        public virtual async Task<TEntity> GetAsync(int primaryKey)
+        public virtual async Task<TEntity> GetAsync(int id)
         {
-            ObjectCheck.PrimaryKeyCheck(primaryKey, $"primaryKey <= 0 in {nameof(IRepository<TEntity>)}");
-            return await dbContext.Set<TEntity>().FindAsync(primaryKey);
+            ObjectCheck.PrimaryKeyCheck(id, $"primaryKey <= 0 in {nameof(IRepository<TEntity>)}");
+            return await dbContext.Set<TEntity>().FindAsync(id);
         }
 
         /// <inheritdoc/>
@@ -62,9 +62,9 @@ namespace SportsBetting.Data.Repositories
         }
 
         /// <inheritdoc/>
-        public virtual async Task DeleteAsync(int primaryKey)
+        public virtual async Task DeleteAsync(int id)
         {
-            var entityToBeDeleted = await GetAsync(primaryKey);
+            var entityToBeDeleted = await GetAsync(id);
             ObjectCheck.EntityCheck(entityToBeDeleted, $"{nameof(TEntity)} missing.");
 
             dbContext.Set<TEntity>().Remove(entityToBeDeleted);

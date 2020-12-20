@@ -51,7 +51,7 @@ namespace SportsBetting.Web.Controllers
         [HttpPost]
         public async Task<ActionResult<EventActionViewModel>> EditMode(int id, UpdateEventDto updateEventDto)
         {
-            var updatedEvent = await this.eventService.UpdateAsync(id, updateEventDto);
+            await this.eventService.UpdateAsync(id, updateEventDto);
             return RedirectToAction("PreviewMode");
         }
 

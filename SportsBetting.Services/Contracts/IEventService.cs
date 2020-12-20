@@ -11,10 +11,10 @@ namespace SportsBetting.Services.Contracts
     public interface IEventService
     {
         Task<EventDto> CreateAsync(CreateEventDto createInput);
-        Task DeleteAsync(int primaryKey);
+        Task DeleteAsync(int id);
         IEnumerable<EventDto> GetAll(Expression<Func<Event, bool>> filter = null);
-        Task<EventDto> GetAsync(int primaryKey);
+        Task<EventDto> GetAsync(int id);
         Task<EventDto> GetSingleAsync(Expression<Func<Event, bool>> filter);
-        Task<EventDto> UpdateAsync(int primaryKey, UpdateEventDto editInput);
+        Task UpdateAsync(int id, UpdateEventDto editInput);
     }
 }
