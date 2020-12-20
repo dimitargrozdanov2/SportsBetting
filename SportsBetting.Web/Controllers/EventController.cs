@@ -23,26 +23,15 @@ namespace SportsBetting.Web.Controllers
 
         public ActionResult<EventActionViewModel> PreviewMode()
         {
-            var result = new List<EventActionViewModel>();
             var allEvents = this.eventService.GetAll().ToList();
-            foreach (var eventDto in allEvents)
-            {
-                result.Add(mapper.Map<EventActionViewModel>(eventDto));
-            }
-
-            return View(result);
+            var mappedEvents = mapper.Map<IList<EventActionViewModel>>(allEvents);
+            return View(mappedEvents);
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task <ActionResult<EventActionViewModel>> AddNewEventMode(CreateEventDto createInput)
         {
             var createdEvent = await this.eventService.CreateAsync(createInput);
-
-            if (createdEvent == null)
-            {
-                return View("BadRequest");
-            }
-            //return View(mapper.Map<EventActionViewModel>(allEvents));
             return RedirectToAction("PreviewMode");
         }
 
@@ -63,12 +52,6 @@ namespace SportsBetting.Web.Controllers
         public async Task<ActionResult<EventActionViewModel>> EditMode(int id, UpdateEventDto updateEventDto)
         {
             var updatedEvent = await this.eventService.UpdateAsync(id, updateEventDto);
-
-            if (updatedEvent == null)
-            {
-                return View("BadRequest");
-            }
-            //return View(mapper.Map<EventActionViewModel>(allEvents));
             return RedirectToAction("PreviewMode");
         }
 
@@ -76,10 +59,6 @@ namespace SportsBetting.Web.Controllers
         public async Task<ActionResult> DeleteMode(int id)
         {
             var dto = await eventService.GetSingleAsync(e => e.Id == id);
-            if (dto == null)
-            {
-                return View("NotFound");
-            }
             var viewModel = mapper.Map<EventActionViewModel>(dto);
             return View(viewModel);
         }

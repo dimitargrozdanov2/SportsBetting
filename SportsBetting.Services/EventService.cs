@@ -25,7 +25,7 @@ namespace SportsBetting.Services
 
         public async Task<EventDto> CreateAsync(CreateEventDto createInput)
         {
-            if (createInput == null) return null;
+            if (createInput == null) throw new BadRequestException("No data provided");
 
             var entity = mapper.Map<Event>(createInput);
             await eventRepository.AddAsync(entity);
@@ -49,22 +49,21 @@ namespace SportsBetting.Services
         public async Task<EventDto> GetSingleAsync(Expression<Func<Event, bool>> filter)
         {
             var singleEntity = await eventRepository.GetSingleAsync(filter);
-            return singleEntity == null ? null : mapper.Map<EventDto>(singleEntity);
+            return singleEntity == null ? throw new NotFoundException("No data found") : mapper.Map<EventDto>(singleEntity);
         }
 
         public async Task<EventDto> GetAsync(int primaryKey)
         {
             ObjectCheck.PrimaryKeyCheck(primaryKey, $"primaryKey <= 0 in {nameof(Event)}");
             var entity = await eventRepository.GetAsync(primaryKey);
-            return entity == null ? null : mapper.Map<EventDto>(entity);
+            return entity == null ? throw new NotFoundException("No data found") : mapper.Map<EventDto>(entity);
         }
 
         public async Task<EventDto> UpdateAsync(int primaryKey, UpdateEventDto editInput)
         {
             ObjectCheck.PrimaryKeyCheck(primaryKey, $"primaryKey <= 0 in {nameof(UpdateEventDto)}");
             var entityToBeUpdated = await eventRepository.GetAsync(primaryKey);
-
-            if (entityToBeUpdated == null) return null;
+            if (entityToBeUpdated == null) throw new BadRequestException("No data provided");
             var entity = mapper.Map(editInput, entityToBeUpdated);
             entity.Id = primaryKey;
             var result = await eventRepository.UpdateAsync(entityToBeUpdated);
