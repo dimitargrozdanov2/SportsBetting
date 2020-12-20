@@ -30,7 +30,8 @@ namespace SportsBetting.Web.Controllers
             {
                 return View("BadRequest");
             }
-            return View(mapper.Map<EventActionViewModel>(allEvents));
+            //return View(mapper.Map<EventActionViewModel>(allEvents));
+            return RedirectToAction("PreviewMode");
         }
 
         [HttpGet]

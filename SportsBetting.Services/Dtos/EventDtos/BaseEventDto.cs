@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SportsBetting.Services.Dtos.EventDtos
@@ -14,6 +15,7 @@ namespace SportsBetting.Services.Dtos.EventDtos
 
         public decimal OddsForSecondTeam { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime StartDate { get; set; }
     }
 }
