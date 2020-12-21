@@ -12,6 +12,5 @@ namespace SportsBetting.Services.Infrastructure
             CreateMap<Event, CreateEventDto>().ReverseMap();
             CreateMap<Event, UpdateEventDto>().ReverseMap();
         }
-
     }
 }
