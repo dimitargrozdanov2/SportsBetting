@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SportsBetting.Services.Contracts;
@@ -21,7 +20,7 @@ namespace SportsBetting.Web.Controllers
             this.mapper = mapper;
         }
 
-        public async Task<ActionResult<EventActionViewModel>> PreviewMode()
+        public async Task<IActionResult> PreviewMode()
         {
             var allEvents = await this.eventService.GetAll();
             var mappedEvents = mapper.Map<IList<EventActionViewModel>>(allEvents);
@@ -30,7 +29,7 @@ namespace SportsBetting.Web.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task <ActionResult<EventActionViewModel>> AddNewEventMode(IFormCollection form)
+        public async Task<IActionResult> AddNewEventMode(IFormCollection form)
         {
             await this.eventService.CreateAsync();
             return RedirectToAction("EditView");
@@ -43,7 +42,7 @@ namespace SportsBetting.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<EventActionViewModel>> EditView()
+        public async Task<IActionResult> EditView()
         {
             var allEvents = await this.eventService.GetAll();
             var mappedEvents = mapper.Map<IList<EventActionViewModel>>(allEvents);
@@ -51,7 +50,7 @@ namespace SportsBetting.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<EventActionViewModel>> EditMode(int id)
+        public async Task<IActionResult> EditMode(int id)
         {
             var dto = await eventService.GetSingleAsync(e => e.Id == id);
             var viewModel = mapper.Map<EventActionViewModel>(dto);
@@ -60,14 +59,14 @@ namespace SportsBetting.Web.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<ActionResult<EventActionViewModel>> EditMode(int id, UpdateEventDto updateEventDto)
+        public async Task<IActionResult> EditMode(int id, UpdateEventDto updateEventDto)
         {
             await this.eventService.UpdateAsync(id, updateEventDto);
             return RedirectToAction("PreviewMode");
         }
 
         [HttpGet]
-        public async Task<ActionResult> DeleteMode(int id)
+        public async Task<IActionResult> DeleteMode(int id)
         {
             var dto = await eventService.GetSingleAsync(e => e.Id == id);
             var viewModel = mapper.Map<EventActionViewModel>(dto);
@@ -76,7 +75,7 @@ namespace SportsBetting.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteMode(int id, IFormCollection form)
+        public async Task<IActionResult> DeleteMode(int id, IFormCollection form)
         {
             await this.eventService.DeleteAsync(id);
             return RedirectToAction("PreviewMode");

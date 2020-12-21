@@ -5,12 +5,10 @@ using SportsBetting.Data;
 using SportsBetting.Data.Exceptions;
 using SportsBetting.Data.Models;
 using SportsBetting.Data.Repositories;
-using SportsBetting.Data.Repositories.Contracts;
 using SportsBetting.Web.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SportsBetting.Test.RepositoryTests

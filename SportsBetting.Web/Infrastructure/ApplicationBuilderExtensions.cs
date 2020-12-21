@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SportsBetting.Data;
 using Microsoft.Extensions.Hosting;
+using SportsBetting.Data;
 
 
 namespace SportsBetting.Web.Infrastructure

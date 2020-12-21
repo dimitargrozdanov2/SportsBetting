@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using SportsBetting.Data.Exceptions;
 using System;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace SportsBetting.Web.Infrastructure

@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportsBetting.Data;
-using SportsBetting.Services.Contracts;
-using SportsBetting.Web.Controllers;
 using SportsBetting.Web.Infrastructure;
 
 namespace SportsBetting.Web

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SportsBetting.Services.Dtos.EventDtos
+﻿namespace SportsBetting.Services.Dtos.EventDtos
 {
     public class UpdateEventDto : BaseEventDto
     {

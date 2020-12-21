@@ -11,8 +11,6 @@ namespace SportsBetting.Services.Infrastructure
             CreateMap<Event, EventDto>().ReverseMap();
             CreateMap<Event, CreateEventDto>().ReverseMap();
             CreateMap<Event, UpdateEventDto>().ReverseMap();
-
-            //creates maps between models and dtos that will be used in the services.
         }
 
     }
