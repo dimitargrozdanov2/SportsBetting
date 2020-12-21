@@ -9,6 +9,12 @@ In edit mode a user can return to preview mode.
 
 In preview mode records are colored. Also a click on any of the odds on an event will console.log information.
 
+Technologies Used:
+ASP .NET Core MVC
+JavaScript,
+HTMl5, 
+CSS3
+
 Rooms for improvement:
 1. Automatic automapper
 2. More javascript and better styling on layout web page.
