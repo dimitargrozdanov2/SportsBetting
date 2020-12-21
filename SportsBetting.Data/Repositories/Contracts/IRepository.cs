@@ -12,7 +12,7 @@ namespace SportsBetting.Data.Repositories.Contracts
     {
         Task<TEntity> GetAsync(int primaryKey);
 
-        Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> filter = null);
+        Task<ICollection<TEntity>> GetAll(Expression<Func<TEntity, bool>> filter = null);
 
         Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> filter);
 
