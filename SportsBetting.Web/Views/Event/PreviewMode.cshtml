@@ -13,7 +13,7 @@
     <button type="button" onclick="location.href='@Url.Action("EditView","Event")'"> Edit Mode</button>
     <br />
 </div>
-<table class="table">
+<table class="table" id="previewtable">
     <thead>
         <tr>
             <th>
@@ -37,26 +37,31 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr class="@(item.StartDate < DateTime.UtcNow ? "finished" : rowcount % 2 == 0 ? "even" : "odd")">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.OddsForFirstTeam)*@
-                    @item.OddsForFirstTeam
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OddsForDraw)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OddsForSecondTeam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
+        <tr class="@(item.StartDate < DateTime.UtcNow ? "finished" : rowcount % 2 == 0 ? "even" : "odd")">
+            <td>
+                <input type="hidden" value="@item.Id" class="form-control" />
+                @item.Name
+            </td>
+            <td>
+                @item.OddsForFirstTeam
+            </td>
+            <td>
+                @item.OddsForDraw
+            </td>
+            <td>
+                @item.OddsForSecondTeam
+            </td>
+            <td>
+                @item.StartDate
+            </td>
 
-            </tr>
+        </tr>
             rowcount++;
         }
     </tbody>
 </table>
+
+@section Scripts
+{
+    <script src="@Url.Content("~/js/odds.js")"></script>
+}

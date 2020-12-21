@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SportsBetting.Services.Contracts;
@@ -26,6 +27,7 @@ namespace SportsBetting.Web.Controllers
             var mappedEvents = mapper.Map<IList<EventActionViewModel>>(allEvents);
             return View(mappedEvents);
         }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task <ActionResult<EventActionViewModel>> AddNewEventMode(IFormCollection form)
