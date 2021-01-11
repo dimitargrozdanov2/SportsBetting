@@ -18,5 +18,4 @@ Technologies Used:
 Rooms for improvement:
 1. Automatic automapper
 2. More javascript and better styling on layout web page.
-3. Console.log outputs to be logged on C# console.
-4. Other
+3. Other
